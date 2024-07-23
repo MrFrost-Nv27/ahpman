@@ -5,6 +5,7 @@ namespace App\Controllers\Frontend;
 use App\Controllers\BaseController;
 use App\Filters\TeamSession;
 use App\Models\Ahpman\KriteriaModel;
+use App\Models\Ahpman\SiswaModel;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
@@ -54,6 +55,7 @@ class Manage extends BaseController
         $this->view->setData([
             "page" => "perhitungan",
             "kriteria" => KriteriaModel::all()->load("subkriteria", "perbandingan"),
+            "siswa" => SiswaModel::all()->load("nilai"),
         ]);
         return $this->view->render("pages/panel/perhitungan");
     }

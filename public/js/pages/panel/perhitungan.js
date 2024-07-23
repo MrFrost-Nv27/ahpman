@@ -240,7 +240,9 @@ $("body").on("click", "#btn-hitung", function (e) {
       let table = $("table#ranking tbody");
       let data = getHasilValue();
       data.forEach((d, i) => {
-        table.append(`<tr><td>${i + 1}</td><td>${d.nama}</td><td>${d.total}</td></tr>`);
+        table.find("tr").eq(i).find("td").eq(0).text(i + 1);
+        table.find("tr").eq(i).find("td").eq(1).text(d.nama);
+        table.find("tr").eq(i).find("td").eq(2).text(d.total);
       })
       return;
     default:

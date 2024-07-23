@@ -8,24 +8,16 @@
 <div class="page-wrapper">
     <div class="page">
         <div class="container">
-            <form method="POST" action="" class="row" id="form-siswa">
-                <div class="input-field col s5">
-                    <input name="code" id="code" type="text" class="validate" required>
-                    <label for="code">id</label>
+            <div class="row">
+                <div class="col-12 text-end">
+                    <button class="btn waves-effect waves-light green btn-slider" data-action="add" type="button"
+                        data-target="form"><i class="material-icons left">add</i>Tambah</button>
                 </div>
-                <div class="input-field col s5">
-                    <input name="name" id="name" type="text" class="validate" required>
-                    <label for="name">Nama</label>
-                </div>
-                <div class="input-field col s2">
-                    <button class="btn waves-effect waves-light green" type="submit"><i
-                            class="material-icons left">add</i>Tambah</button>
-                </div>
-            </form>
+            </div>
             <div class="row">
                 <div class="col s12">
                     <div class="table-wrapper">
-                        <table class="striped highlight responsive-table" id="" width="100%">
+                        <table class="striped highlight responsive-table" id="table-siswa" width="100%">
                             <thead>
                             </thead>
                             <tbody>

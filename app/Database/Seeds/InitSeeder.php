@@ -4,6 +4,8 @@ namespace App\Database\Seeds;
 
 use App\Models\Ahpman\KriteriaModel;
 use App\Models\Ahpman\KriteriaPerbandinganModel;
+use App\Models\Ahpman\NilaiModel;
+use App\Models\Ahpman\SiswaModel;
 use App\Models\Ahpman\SubkriteriaModel;
 use App\Models\PenggunaModel;
 use CodeIgniter\Database\Seeder;
@@ -85,5 +87,182 @@ class InitSeeder extends Seeder
             ], );
         }
 
+        SiswaModel::create([
+            'id' => 1,
+            'nama' => 'Alan',
+        ]);
+        SiswaModel::create([
+            'id' => 2,
+            'nama' => 'Akrom',
+        ]);
+        SiswaModel::create([
+            'id' => 3,
+            'nama' => 'Yudha',
+        ]);
+        SiswaModel::create([
+            'id' => 4,
+            'nama' => 'Sadiah',
+            'jenis_kelamin' => "P",
+        ]);
+        SiswaModel::create([
+            'id' => 5,
+            'nama' => 'Bella',
+            'jenis_kelamin' => "P",
+        ]);
+
+        NilaiModel::create([
+            'siswa_id' => 1,
+            'kriteria_id' => 1,
+            'nilai' => 70,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 1,
+            'kriteria_id' => 2,
+            'nilai' => 78,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 1,
+            'kriteria_id' => 3,
+            'nilai' => 89,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 1,
+            'kriteria_id' => 4,
+            'nilai' => 97,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 1,
+            'kriteria_id' => 5,
+            'nilai' => 77,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 1,
+            'kriteria_id' => 6,
+            'nilai' => 80,
+        ]);
+
+        NilaiModel::create([
+            'siswa_id' => 2,
+            'kriteria_id' => 1,
+            'nilai' => 75,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 2,
+            'kriteria_id' => 2,
+            'nilai' => 76,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 2,
+            'kriteria_id' => 3,
+            'nilai' => 77,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 2,
+            'kriteria_id' => 4,
+            'nilai' => 87,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 2,
+            'kriteria_id' => 5,
+            'nilai' => 90,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 2,
+            'kriteria_id' => 6,
+            'nilai' => 89,
+        ]);
+
+        NilaiModel::create([
+            'siswa_id' => 3,
+            'kriteria_id' => 1,
+            'nilai' => 67,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 3,
+            'kriteria_id' => 2,
+            'nilai' => 80,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 3,
+            'kriteria_id' => 3,
+            'nilai' => 87,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 3,
+            'kriteria_id' => 4,
+            'nilai' => 78,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 3,
+            'kriteria_id' => 5,
+            'nilai' => 90,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 3,
+            'kriteria_id' => 6,
+            'nilai' => 87,
+        ]);
+
+        NilaiModel::create([
+            'siswa_id' => 4,
+            'kriteria_id' => 1,
+            'nilai' => 70,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 4,
+            'kriteria_id' => 2,
+            'nilai' => 75,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 4,
+            'kriteria_id' => 3,
+            'nilai' => 67,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 4,
+            'kriteria_id' => 4,
+            'nilai' => 75,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 4,
+            'kriteria_id' => 5,
+            'nilai' => 70,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 4,
+            'kriteria_id' => 6,
+            'nilai' => 79,
+        ]);
+
+        NilaiModel::create([
+            'siswa_id' => 5,
+            'kriteria_id' => 1,
+            'nilai' => 66,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 5,
+            'kriteria_id' => 2,
+            'nilai' => 65,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 5,
+            'kriteria_id' => 3,
+            'nilai' => 67,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 5,
+            'kriteria_id' => 4,
+            'nilai' => 70,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 5,
+            'kriteria_id' => 5,
+            'nilai' => 70,
+        ]);
+        NilaiModel::create([
+            'siswa_id' => 5,
+            'kriteria_id' => 6,
+            'nilai' => 60,
+        ]);
     }
 }

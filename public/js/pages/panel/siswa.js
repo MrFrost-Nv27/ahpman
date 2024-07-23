@@ -13,8 +13,8 @@ const table = {
           return meta.row + meta.settings._iDisplayStart + 1;
         },
       },
-      { title: "Kode", data: "code" },
-      { title: "Nama Penyakit", data: "name" },
+      { title: "Nama Siswa", data: "nama" },
+      { title: "Jenis Kelamin", data: "jenis_kelamin" , render(data) { return data == "L" ? "Laki-laki" : "Perempuan" }},
       {
         title: "Aksi",
         data: "id",

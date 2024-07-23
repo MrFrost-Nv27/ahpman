@@ -33,8 +33,8 @@
 
                     <!-- Email -->
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingEmailInput" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>" required>
-                        <label for="floatingEmailInput"><?= lang('Auth.email') ?></label>
+                        <input type="text" class="form-control" id="floatingEmailInput" name="username" autocomplete="username" placeholder="Username" value="<?= old('username') ?>" required>
+                        <label for="floatingEmailInput">Username</label>
                     </div>
 
                     <!-- Password -->

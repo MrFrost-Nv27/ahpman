@@ -74,8 +74,8 @@ class Auth extends ShieldAuth
      * to apply any logic you may need.
      */
     public array $redirects = [
-        'register'          => '/',
-        'login'             => '/',
+        'register'          => '/panel',
+        'login'             => '/panel',
         'logout'            => 'login',
         'force_reset'       => '/',
         'permission_denied' => '/',
@@ -280,7 +280,7 @@ class Auth extends ShieldAuth
      */
     public array $validFields = [
         'email',
-        // 'username',
+        'username',
     ];
 
     /**

@@ -55,6 +55,7 @@ class InitMigration extends Migration
                 ->constrained("kriteria")
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->unique(["kriteria_left_id", "kriteria_right_id"]);
             $table->float("bobot");
             $table->timestamps();
         });
@@ -82,6 +83,7 @@ class InitMigration extends Migration
                 ->constrained("kriteria")
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->unique(["siswa_id", "kriteria_id"]);
             $table->float("nilai");
             $table->timestamps();
         });

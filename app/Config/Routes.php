@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\Api\KriteriaController;
+use App\Controllers\Api\SiswaController;
 use App\Controllers\Frontend\Manage;
 use App\Controllers\Migrate;
 use CodeIgniter\Router\RouteCollection;
@@ -31,4 +32,6 @@ $routes->group('api', ['namespace' => 'App\Controllers\Api'], static function ($
     });
     $routes->post('kriteria/bobot', [KriteriaController::class, 'updateBobot']);
     $routes->resource('kriteria', ['namespace' => '', 'controller' => KriteriaController::class, 'websafe' => 1]);
+    $routes->post('siswa/nilai', [SiswaController::class, 'updateNilai']);
+    $routes->resource('siswa', ['namespace' => '', 'controller' => SiswaController::class, 'websafe' => 1]);
 });

@@ -205,51 +205,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach ($siswa as $s): ?>
                                 <tr>
-                                    <td>Alan</td>
-                                    <td>70</td>
-                                    <td>78</td>
-                                    <td>89</td>
-                                    <td>97</td>
-                                    <td>77</td>
-                                    <td>80</td>
+                                    <td><?=$s->nama?></td>
+                                    <?php foreach ($kriteria as $k): ?>
+                                    <td><?=$s->nilai?->where("kriteria_id", $k->id)->first()?->nilai ?? 0?></td>
+                                    <?php endforeach?>
                                 </tr>
-                                <tr>
-                                    <td>Akrom</td>
-                                    <td>75</td>
-                                    <td>76</td>
-                                    <td>77</td>
-                                    <td>87</td>
-                                    <td>90</td>
-                                    <td>89</td>
-                                </tr>
-                                <tr>
-                                    <td>Yudha</td>
-                                    <td>67</td>
-                                    <td>80</td>
-                                    <td>87</td>
-                                    <td>78</td>
-                                    <td>90</td>
-                                    <td>87</td>
-                                </tr>
-                                <tr>
-                                    <td>Sadiah</td>
-                                    <td>70</td>
-                                    <td>75</td>
-                                    <td>67</td>
-                                    <td>75</td>
-                                    <td>70</td>
-                                    <td>79</td>
-                                </tr>
-                                <tr>
-                                    <td>Bela</td>
-                                    <td>66</td>
-                                    <td>65</td>
-                                    <td>67</td>
-                                    <td>70</td>
-                                    <td>70</td>
-                                    <td>60</td>
-                                </tr>
+                                <?php endforeach?>
                             </tbody>
                         </table>
                     </div>
@@ -273,41 +236,15 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach ($siswa as $s): ?>
                                 <tr>
-                                    <td>Alan</td>
+                                    <td><?=$s->nama?></td>
                                     <?php foreach ($kriteria as $k): ?>
-                                    <td class="1-<?=$k->id?>"></td>
+                                    <td></td>
                                     <?php endforeach?>
                                     <td></td>
                                 </tr>
-                                <tr>
-                                    <td>Akrom</td>
-                                    <?php foreach ($kriteria as $k): ?>
-                                    <td class="2-<?=$k->id?>"></td>
-                                    <?php endforeach?>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Yudha</td>
-                                    <?php foreach ($kriteria as $k): ?>
-                                    <td class="3-<?=$k->id?>"></td>
-                                    <?php endforeach?>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Sadiah</td>
-                                    <?php foreach ($kriteria as $k): ?>
-                                    <td class="4-<?=$k->id?>"></td>
-                                    <?php endforeach?>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Bela</td>
-                                    <?php foreach ($kriteria as $k): ?>
-                                    <td class="5-<?=$k->id?>"></td>
-                                    <?php endforeach?>
-                                    <td></td>
-                                </tr>
+                                <?php endforeach?>
                             </tbody>
                         </table>
                     </div>
@@ -329,6 +266,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($siswa as $s): ?>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <?php endforeach?>
                         </tbody>
                     </table>
                 </div>

@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col s12 m6 l3">
                 <div class="count-card">
-                    <div class="count-number" data-entity="siswa">5</div>
+                    <div class="count-number" data-entity="siswa">0</div>
                     <div class="count-desc">
                         <p><b>Jumlah</b></p>
                         <p>Peserta Didik</p>

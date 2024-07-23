@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Entities\User;
 use App\Models\UserModel;
 use CodeIgniter\Events\Events;
 use CodeIgniter\Exceptions\FrameworkException;
@@ -53,17 +54,6 @@ Events::on('pre_system', static function () {
             });
         }
     }
-});
-
-
-Events::on('login', function (User $user) {
-    $request = \Config\Services::request();
-    $response = \Config\Services::response();
-
-    $response->setJSON([
-        "redirect" => route_to("dashboard"),
-    ])->setStatusCode(200)->setContentType('application/json')->send();
-    die;
 });
 
 Events::on('failedLogin', function ($credentials) {

@@ -113,7 +113,10 @@ $("body").on("click", ".btn-action", function (e) {
         contentType: "application/json",
         processData: false,
         success: (res) => {
-          console.log(res);
+          Toast.fire({
+            icon: "success",
+            title: "Data perbandingan tersimpan",
+          });
         },
       });
       break;
