@@ -13,7 +13,7 @@
         <a href="<?= base_url('panel/kriteria') ?>" class="nav-link"><i class="material-icons">format_list_bulleted</i>Bobot Kriteria</a>
     </div>
     <div class="nav-item" data-page="nilai">
-        <a href="<?= base_url('panel/nilai') ?>" class="nav-link"><i class="material-icons">checklist</i>Daftar Nilai</a>
+        <a href="<?= base_url('panel/nilai') ?>" class="nav-link"><i class="material-icons">checklist</i>Data Nilai</a>
     </div>
     <div class="nav-item" data-page="perhitungan">
         <a href="<?= base_url('panel/perhitungan') ?>" class="nav-link"><i class="material-icons">calculate</i>Hasil Perhitungan</a>

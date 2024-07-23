@@ -11,11 +11,11 @@
             <form method="POST" action="" class="row" id="form-siswa">
                 <div class="input-field col s5">
                     <input name="code" id="code" type="text" class="validate" required>
-                    <label for="code">Kode Penyakit</label>
+                    <label for="code">id</label>
                 </div>
                 <div class="input-field col s5">
                     <input name="name" id="name" type="text" class="validate" required>
-                    <label for="name">Nama Penyakit</label>
+                    <label for="name">Nama</label>
                 </div>
                 <div class="input-field col s2">
                     <button class="btn waves-effect waves-light green" type="submit"><i
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col s12">
                     <div class="table-wrapper">
-                        <table class="striped highlight responsive-table" id="table-siswa" width="100%">
+                        <table class="striped highlight responsive-table" id="" width="100%">
                             <thead>
                             </thead>
                             <tbody>
