@@ -23,6 +23,42 @@ class InitSeeder extends Seeder
             'password' => "password",
         ])->addGroup('admin')->activate();
 
+        $alan = PenggunaModel::create([
+            'username' => 'alan',
+            'name' => 'Alan',
+        ])->setEmailIdentity([
+            'email' => 'alan@gmail.com',
+            'password' => "password",
+        ])->addGroup('user')->activate();
+        $akrom = PenggunaModel::create([
+            'username' => 'akrom',
+            'name' => 'Akrom',
+        ])->setEmailIdentity([
+            'email' => 'akrom@gmail.com',
+            'password' => "password",
+        ])->addGroup('user')->activate();
+        $yudha = PenggunaModel::create([
+            'username' => 'yudha',
+            'name' => 'Yudha',
+        ])->setEmailIdentity([
+            'email' => 'yudha@gmail.com',
+            'password' => "password",
+        ])->addGroup('user')->activate();
+        $sadiah = PenggunaModel::create([
+            'username' => 'sadiah',
+            'name' => 'Sadiah',
+        ])->setEmailIdentity([
+            'email' => 'sadiah@gmail.com',
+            'password' => "password",
+        ])->addGroup('user')->activate();
+        $bella = PenggunaModel::create([
+            'username' => 'bella',
+            'name' => 'Bella',
+        ])->setEmailIdentity([
+            'email' => 'bella@gmail.com',
+            'password' => "password",
+        ])->addGroup('user')->activate();
+
         KriteriaModel::create([
             'id' => 1,
             'kode' => 'C1',
@@ -89,24 +125,29 @@ class InitSeeder extends Seeder
 
         SiswaModel::create([
             'id' => 1,
-            'nama' => 'Alan',
+            'user_id' => $alan->id,
+            'nama' => $alan->name,
         ]);
         SiswaModel::create([
             'id' => 2,
-            'nama' => 'Akrom',
+            'user_id' => $akrom->id,
+            'nama' => $akrom->name,
         ]);
         SiswaModel::create([
             'id' => 3,
-            'nama' => 'Yudha',
+            'user_id' => $yudha->id,
+            'nama' => $yudha->name,
         ]);
         SiswaModel::create([
             'id' => 4,
-            'nama' => 'Sadiah',
+            'user_id' => $sadiah->id,
+            'nama' => $sadiah->name,
             'jenis_kelamin' => "P",
         ]);
         SiswaModel::create([
             'id' => 5,
-            'nama' => 'Bella',
+            'user_id' => $bella->id,
+            'nama' => $bella->name,
             'jenis_kelamin' => "P",
         ]);
 

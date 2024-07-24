@@ -23,6 +23,10 @@ class InitMigration extends Migration
 
         Eloquent::schema()->create("siswa", function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('user_id')
+                ->constrained("users")
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string("nama");
             $table->enum("jenis_kelamin", ["L", "P"])->default("L");
             $table->string("tempat_lahir")->nullable();

@@ -10,7 +10,8 @@ class SiswaController extends BaseApi
 {
     protected $modelName = SiswaModel::class;
 
-    protected $load = ['nilai'];
+    protected $load = ['nilai', 'user'];
+    // protected $append = ['user.email'];
 
     public function updateNilai()
     {

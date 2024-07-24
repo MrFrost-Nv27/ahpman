@@ -14,7 +14,8 @@ const table = {
         },
       },
       { title: "Nama Siswa", data: "nama" },
-      { title: "Jenis Kelamin", data: "jenis_kelamin" , render(data) { return data == "L" ? "Laki-laki" : "Perempuan" }},
+      { title: "Username", data: "user.username"},
+      { title: "Email", data: "user.email"},
       {
         title: "Aksi",
         data: "id",
