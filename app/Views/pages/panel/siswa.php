@@ -41,6 +41,7 @@
         <input type="hidden" name="id" id="add-id">
         <div class="input-field col s12">
             <input name="nama" id="add-nama" type="text" class="validate" required>
+            <input type="hidden" name="name" id="add-name">
             <label for="add-nama">Nama Siswa</label>
         </div>
         <div class="input-field col s12">
@@ -71,6 +72,59 @@
     <h1>Edit Data Peserta DIdik</h1>
     <br>
     <form action="" id="form-edit" class="row">
+        <input type="hidden" name="id" id="edit-id">
+        <div class="input-field col s12">
+            <input name="nama" id="edit-nama" type="text" class="validate" required>
+            <input type="hidden" name="name" id="edit-name">
+            <label for="edit-nama">Nama Siswa</label>
+        </div>
+        <div class="input-field col s12">
+            <select name="jenis_kelamin" id="edit-jenis_kelamin">
+                <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                <option value="L">Laki-laki</option>
+                <option value="P">Perempuan</option>
+            </select>
+            <label>Materialize Select</label>
+        </div>
+
+        <div class="input-field col s12">
+            <input name="tempat_lahir" id="edit-tempat_lahir" type="text" class="validate" required>
+            <label for="edit-tempat_lahir">Tempat Lahir</label>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" class="form-datepicker" name="tanggal_lahir" id="edit-tanggal_lahir">
+                <label for="edit-tanggal_lahir">Tanggal Lahir</label>
+            </div>
+        </div>
+        <div class="input-field col s12">
+            <textarea id="edit-alamat" name="alamat" class="materialize-textarea"></textarea>
+            <label for="edit-alamat">Alamat</label>
+        </div>
+        <div class="input-field col s12">
+            <input name="asal_sekolah" id="edit-asal_sekolah" type="text" class="validate" required>
+            <label for="edit-asal_sekolah">Asal Sekolah</label>
+        </div>
+        <div class="input-field col s12">
+            <input name="nohp" id="edit-nohp" type="text" class="validate" required>
+            <label for="edit-nohp">Nomor HP</label>
+        </div>
+        <div class="input-field col s12">
+            <input name="nama_ayah" id="edit-nama_ayah" type="text" class="validate" required>
+            <label for="edit-nama_ayah">Nama Ayah</label>
+        </div>
+        <div class="input-field col s12">
+            <input name="pekerjaan_ayah" id="edit-pekerjaan_ayah" type="text" class="validate" required>
+            <label for="edit-pekerjaan_ayah">Pekerjaan Ayah</label>
+        </div>
+        <div class="input-field col s12">
+            <input name="nama_ibu" id="edit-nama_ibu" type="text" class="validate" required>
+            <label for="edit-nama_ibu">Nama Ibu</label>
+        </div>
+        <div class="input-field col s12">
+            <input name="pekerjaan_ibu" id="edit-pekerjaan_ibu" type="text" class="validate" required>
+            <label for="edit-pekerjaan_ibu">Pekerjaan Ibu</label>
+        </div>
         <div class="row">
             <div class="input-field col s12 center">
                 <button class="btn waves-effect waves-light green" type="submit"><i

@@ -30,11 +30,7 @@ const steps = [
   },
   {
     step: 7,
-    title: "Selesai",
-  },
-  {
-    step: 7,
-    title: "Memberikan Keterangan Lulus sebanyak n",
+    title: "Simpan Hasil",
   },
 ];
 
@@ -50,8 +46,9 @@ $.fn.getColumn = function (column) {
 
 function getHasilValue() {
   const crits = cloud.get("kriteria");
+  const siswa = cloud.get("siswa");
   const data = [];
-  for (let s = 0; s < 5; s++) {
+  for (let s = 0; s < siswa.length; s++) {
     let id = s + 1;
     let nama = $("table#hasil tbody tr").eq(s).find("td").eq(0).text();
     let total = Number(
@@ -72,7 +69,9 @@ function getHasilValue() {
 }
 
 $("body").on("click", "#btn-hitung", function (e) {
-  const count = $("table#pairwise tbody tr:first-child td").length - 1;
+  const siswa = cloud.get("siswa");
+  const crits = cloud.get("kriteria");
+  const count = crits.length;
   const step = Number($(this).attr("data-step"));
   const btn = $(this);
   const keterangan = $(this).prev();
@@ -203,7 +202,7 @@ $("body").on("click", "#btn-hitung", function (e) {
       $("table#cr tbody tr td.cr").text(cr);
       break;
     case 5:
-      for (let row = 0; row < 5; row++) {
+      for (let row = 0; row < siswa.length; row++) {
         let total = 0;
         for (let col = 0; col < count; col++) {
           let cpriority = Number(
@@ -240,10 +239,28 @@ $("body").on("click", "#btn-hitung", function (e) {
       let table = $("table#ranking tbody");
       let data = getHasilValue();
       data.forEach((d, i) => {
+        table.find("tr").eq(i).attr("data-id", d.id);
         table.find("tr").eq(i).find("td").eq(0).text(i + 1);
         table.find("tr").eq(i).find("td").eq(1).text(d.nama);
         table.find("tr").eq(i).find("td").eq(2).text(d.total);
       })
+      break;
+    case 7:
+      $.ajax({
+        type: "POST",
+        url: origin + "/api/siswa/hasil",
+        data: JSON.stringify(getRankingValue()),
+        cache: false,
+        dataType: "json",
+        contentType: "application/json",
+        processData: false,
+        success: (res) => {
+          Toast.fire({
+            icon: "success",
+            title: "Data berhasil tersimpan",
+          });
+        },
+      });
       return;
     default:
       break;
@@ -258,6 +275,21 @@ $("body").on("click", "#btn-hitung", function (e) {
   });
 });
 
+function getRankingValue() {
+  const siswa = cloud.get("siswa");
+  const table = $("table#ranking tbody");
+  let data = [];
+  $.each(siswa, function (i, s) { 
+    let row = table.find(`tr[data-id="${s.id}"]`);
+    data.push({
+      id: s.id,
+      ranking: Number(row.find("td").eq(0).text()),
+      total: Number(row.find("td").eq(2).text()),
+    });
+  });
+  return data;
+}
+
 $(document).ready(function () {
   cloud
     .add(origin + "/api/kriteria", {
@@ -268,6 +300,15 @@ $(document).ready(function () {
       },
     })
     .then((kriteria) => {
+      // renderPerbandingan();
+    });
+  cloud
+    .add(origin + "/api/siswa", {
+      name: "siswa",
+      callback: (data) => {
+      },
+    })
+    .then((siswa) => {
       // renderPerbandingan();
     });
   $(".preloader").slideUp();

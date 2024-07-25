@@ -38,6 +38,8 @@ class InitMigration extends Migration
             $table->string("nama_ibu")->nullable();
             $table->string("pekerjaan_ayah")->nullable();
             $table->string("pekerjaan_ibu")->nullable();
+            $table->float("total")->nullable();
+            $table->integer("ranking")->nullable();
             $table->text("foto")->default("profile.png");
             $table->timestamps();
         });

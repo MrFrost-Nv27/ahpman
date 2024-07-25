@@ -33,5 +33,6 @@ $routes->group('api', ['namespace' => 'App\Controllers\Api'], static function ($
     $routes->post('kriteria/bobot', [KriteriaController::class, 'updateBobot']);
     $routes->resource('kriteria', ['namespace' => '', 'controller' => KriteriaController::class, 'websafe' => 1]);
     $routes->post('siswa/nilai', [SiswaController::class, 'updateNilai']);
+    $routes->post('siswa/hasil', [SiswaController::class, 'updateHasil']);
     $routes->resource('siswa', ['namespace' => '', 'controller' => SiswaController::class, 'websafe' => 1]);
 });
