@@ -6,19 +6,22 @@ use App\Controllers\BaseController;
 use App\Filters\TeamSession;
 use App\Models\Ahpman\KriteriaModel;
 use App\Models\Ahpman\SiswaModel;
+use App\Models\PenggunaModel;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
 class Manage extends BaseController
 {
+    protected PenggunaModel $user;
     public function initController(
         RequestInterface $request,
         ResponseInterface $response,
         LoggerInterface $logger, ) {
         parent::initController($request, $response, $logger);
+        $this->user = PenggunaModel::find(auth()->user()->id);
         $this->view->setData([
-            // "user" => TeamSession::user()
+            "user" => $this->user,
         ]);
     }
     public function index(): string
@@ -26,14 +29,14 @@ class Manage extends BaseController
         $this->view->setData([
             "page" => "dashboard"
         ]);
-        return $this->view->render("pages/panel/index");
+        return $this->view->render("pages/panel/{$this->user->groups[0]->group}/index");
     }
     public function siswa(): string
     {
         $this->view->setData([
             "page" => "siswa"
         ]);
-        return $this->view->render("pages/panel/siswa");
+        return $this->view->render("pages/panel/admin/siswa");
     }
     public function kriteria(): string
     {
@@ -41,14 +44,14 @@ class Manage extends BaseController
             "page" => "kriteria",
             "kriteria" => KriteriaModel::all()->load("subkriteria"),
         ]);
-        return $this->view->render("pages/panel/kriteria");
+        return $this->view->render("pages/panel/admin/kriteria");
     }
     public function nilai(): string
     {
         $this->view->setData([
             "page" => "nilai"
         ]);
-        return $this->view->render("pages/panel/nilai");
+        return $this->view->render("pages/panel/admin/nilai");
     }
     public function perhitungan(): string
     {
@@ -57,6 +60,34 @@ class Manage extends BaseController
             "kriteria" => KriteriaModel::all()->load("subkriteria", "perbandingan"),
             "siswa" => SiswaModel::all()->load("nilai"),
         ]);
-        return $this->view->render("pages/panel/perhitungan");
+        return $this->view->render("pages/panel/admin/perhitungan");
+    }
+
+    public function profil(): string
+    {
+        $this->view->setData([
+            "page" => "profil",
+            "siswa" => SiswaModel::where("user_id", $this->user->id)->first(),
+        ]);
+        return $this->view->render("pages/panel/user/profil");
+    }
+
+    public function ujian(): string
+    {
+        $this->view->setData([
+            "page" => "ujian",
+            "kriteria" => KriteriaModel::all(),
+            "siswa" => SiswaModel::where("user_id", $this->user->id)->first()->load("nilai"),
+        ]);
+        return $this->view->render("pages/panel/user/ujian");
+    }
+
+    public function pengumuman(): string
+    {
+        $this->view->setData([
+            "page" => "pengumuman",
+            "siswa" => SiswaModel::all()->sortBy("ranking"),
+        ]);
+        return $this->view->render("pages/panel/user/pengumuman");
     }
 }

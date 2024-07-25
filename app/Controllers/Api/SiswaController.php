@@ -71,4 +71,9 @@ class SiswaController extends BaseApi
         $users = auth()->getProvider();
         $users->delete($data->user_id, true);
     }
+
+    public function login()
+    {
+        return $this->respond(SiswaModel::where("user_id", auth()->id())->first());
+    }
 }

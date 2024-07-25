@@ -25,6 +25,9 @@ $routes->group('panel', static function (RouteCollection $routes) {
     $routes->get('kriteria', [Manage::class, 'kriteria']);
     $routes->get('nilai', [Manage::class, 'nilai']);
     $routes->get('perhitungan', [Manage::class, 'perhitungan']);
+    $routes->get('profil', [Manage::class, 'profil']);
+    $routes->get('ujian', [Manage::class, 'ujian']);
+    $routes->get('pengumuman', [Manage::class, 'pengumuman']);
 });
 
 $routes->group('api', ['namespace' => 'App\Controllers\Api'], static function ($routes) {
@@ -34,5 +37,6 @@ $routes->group('api', ['namespace' => 'App\Controllers\Api'], static function ($
     $routes->resource('kriteria', ['namespace' => '', 'controller' => KriteriaController::class, 'websafe' => 1]);
     $routes->post('siswa/nilai', [SiswaController::class, 'updateNilai']);
     $routes->post('siswa/hasil', [SiswaController::class, 'updateHasil']);
+    $routes->get('siswa/login', [SiswaController::class, 'login']);
     $routes->resource('siswa', ['namespace' => '', 'controller' => SiswaController::class, 'websafe' => 1]);
 });
