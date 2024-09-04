@@ -16,13 +16,12 @@
 </head>
 
 <body>
-    <?=$this->include('layouts/_preloader')?>
     <div class="parent-wrapper">
         <div class="hero-wrapper">
             <?=$this->include('layouts/auth/hero')?>
         </div>
         <div class="content-wrapper">
-            <img src="<?=base_url('img/logo.png')?>" class="logo" alt="logo" style="width: 10rem;">
+            <img src="<?=base_url('favicon.ico')?>" class="logo" alt="logo" style="width: 4rem;">
             <?=$this->renderSection('main')?>
         </div>
     </div>

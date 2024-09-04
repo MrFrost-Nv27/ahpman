@@ -3,6 +3,7 @@
 use App\Controllers\Api\KriteriaController;
 use App\Controllers\Api\SiswaController;
 use App\Controllers\Frontend\Manage;
+use App\Controllers\Home;
 use App\Controllers\Migrate;
 use CodeIgniter\Router\RouteCollection;
 
@@ -31,6 +32,7 @@ $routes->group('panel', static function (RouteCollection $routes) {
 });
 
 $routes->group('api', ['namespace' => 'App\Controllers\Api'], static function ($routes) {
+    $routes->post('register', [Home::class, 'register']);
     $routes->group('v2', ['namespace' => 'App\Controllers\Api'], static function ($routes) {
     });
     $routes->post('kriteria/bobot', [KriteriaController::class, 'updateBobot']);

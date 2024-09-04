@@ -56,6 +56,16 @@ Events::on('pre_system', static function () {
     }
 });
 
+Events::on('login', function (User $user) {
+    $request = \Config\Services::request();
+    $response = \Config\Services::response();
+
+    $response->setJSON([
+        "redirect" => route_to("dashboard"),
+    ])->setStatusCode(200)->setContentType('application/json')->send();
+    die;
+});
+
 Events::on('failedLogin', function ($credentials) {
     $response = \Config\Services::response();
     $provider = model(UserModel::class);

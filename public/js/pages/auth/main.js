@@ -43,6 +43,44 @@ $("body").on("submit", "form#login", function (e) {
   });
 });
 
+$("body").on("submit", "form#register", function (e) {
+  e.preventDefault();
+  const data = {};
+  $(this)
+    .serializeArray()
+    .map(function (x) {
+      data[x.name] = x.value;
+    });
+
+  if (data.password !== data.password_confirm) {
+    return Toast.fire({
+      icon: "error",
+      title: "Konfirmasi Password tidak sesuai",
+    });
+  }
+
+  $.ajax({
+    type: "POST",
+    url: origin + "/api/register",
+    data: data,
+    success: async function (response) {
+      // $(".preloader").slideUp();
+      await Toast.fire({
+        icon: "success",
+        title: "Anda berhasil mendaftar",
+      });
+      if (response.redirect) {
+        window.location.href = response.redirect;
+      } else {
+        window.location.reload();
+      }
+    },
+    complete: function () {
+      // $(".preloader").slideUp();
+    },
+  });
+});
+
 $(document).ready(function () {
   $(".preloader").slideUp();
 });
