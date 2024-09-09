@@ -40,6 +40,7 @@ class InitMigration extends Migration
             $table->string("pekerjaan_ibu")->nullable();
             $table->float("total")->nullable();
             $table->integer("ranking")->nullable();
+            $table->string("status")->nullable();
             $table->text("foto")->default("profile.png");
             $table->timestamps();
         });

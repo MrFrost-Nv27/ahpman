@@ -21,6 +21,7 @@ const table = {
       { title: "Username", data: "user.username" },
       { title: "Email", data: "user.identities[0].secret" },
       { title: "Ranking", data: "ranking" },
+      { title: "Status", data: "status" },
       {
         title: "Aksi",
         data: "id",
@@ -36,13 +37,16 @@ const table = {
   }),
 };
 
-const datePicker = M.Datepicker.init(document.querySelectorAll(".form-datepicker"), {
-  format: "yyyy-mm-dd",
-  defaultDate: new Date(),
-  setDefaultDate: true,
-  autoClose: true,
-  container: document.querySelector("body"),
-});
+const datePicker = M.Datepicker.init(
+  document.querySelectorAll(".form-datepicker"),
+  {
+    format: "yyyy-mm-dd",
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true,
+    container: document.querySelector("body"),
+  }
+);
 
 $("form#form-add").on("submit", function (e) {
   e.preventDefault();
@@ -119,22 +123,22 @@ $("body").on("click", ".btn-action", function (e) {
         }
       });
       break;
-      case "edit":
-        let dataEdit = cloud.get("siswa").find((x) => x.id == id);
-        $("form#form-edit")[0].reset();
-        $("form#form-edit").find("input[name=id]").val(dataEdit.id);
-        $.each(dataEdit, function (field, val) { 
-          $("form#form-edit").find(`[name=${field}]`).val(val);
-        });
-        M.updateTextFields();
-        M.textareaAutoResize($("textarea"));
-        break;
-      case "password":
-        let dataPassword = cloud.get("siswa").find((x) => x.id == id);
-        $("form#form-password")[0].reset();
-        $("form#form-password").find("input[name=id]").val(dataPassword.id);
-        M.updateTextFields();
-        break;
+    case "edit":
+      let dataEdit = cloud.get("siswa").find((x) => x.id == id);
+      $("form#form-edit")[0].reset();
+      $("form#form-edit").find("input[name=id]").val(dataEdit.id);
+      $.each(dataEdit, function (field, val) {
+        $("form#form-edit").find(`[name=${field}]`).val(val);
+      });
+      M.updateTextFields();
+      M.textareaAutoResize($("textarea"));
+      break;
+    case "password":
+      let dataPassword = cloud.get("siswa").find((x) => x.id == id);
+      $("form#form-password")[0].reset();
+      $("form#form-password").find("input[name=id]").val(dataPassword.id);
+      M.updateTextFields();
+      break;
     default:
       break;
   }

@@ -1,9 +1,10 @@
 <?php
+
 /** @var \CodeIgniter\View\View $this */
 ?>
 
-<?=$this->extend('layouts/panel/main')?>
-<?=$this->section('main')?>
+<?= $this->extend('layouts/panel/main') ?>
+<?= $this->section('main') ?>
 <h1 class="page-title">Hasil Perhitungan</h1>
 <div class="page-wrapper">
     <div class="page">
@@ -20,28 +21,28 @@
                             <tr>
                                 <th style="width: 5rem"></th>
                                 <?php foreach ($kriteria as $k): ?>
-                                <th style="width: 5rem"><?=$k->kode?></th>
-                                <?php endforeach?>
+                                    <th style="width: 5rem"><?= $k->kode ?></th>
+                                <?php endforeach ?>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($kriteria as $k): ?>
-                            <tr>
-                                <td><?=$k->kode?></td>
-                                <?php foreach ($kriteria as $l): ?>
-                                <td class="<?=$k->id?>-<?=$l->id?>">
-                                    <?=$k->perbandingan->where("kriteria_right_id", $l->id)->first()?->bobot ?? 1?>
-                                </td>
-                                <?php endforeach?>
-                            </tr>
-                            <?php endforeach?>
+                                <tr>
+                                    <td><?= $k->kode ?></td>
+                                    <?php foreach ($kriteria as $l): ?>
+                                        <td class="<?= $k->id ?>-<?= $l->id ?>">
+                                            <?= $k->perbandingan->where("kriteria_right_id", $l->id)->first()?->bobot ?? 1 ?>
+                                        </td>
+                                    <?php endforeach ?>
+                                </tr>
+                            <?php endforeach ?>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td>Jumlah</td>
                                 <?php foreach ($kriteria as $k): ?>
-                                <td></td>
-                                <?php endforeach?>
+                                    <td></td>
+                                <?php endforeach ?>
                             </tr>
                         </tfoot>
                     </table>
@@ -59,30 +60,30 @@
                             <tr>
                                 <th></th>
                                 <?php foreach ($kriteria as $k): ?>
-                                <th><?=$k->kode?></th>
-                                <?php endforeach?>
+                                    <th><?= $k->kode ?></th>
+                                <?php endforeach ?>
                                 <th>Jumlah</th>
                                 <th>Prioritas</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($kriteria as $k): ?>
-                            <tr>
-                                <td><?=$k->kode?></td>
-                                <?php foreach ($kriteria as $l): ?>
-                                <td class="<?=$k->id?>-<?=$l->id?>"></td>
-                                <?php endforeach?>
-                                <td class="jumlah-<?=$k->id?>"></td>
-                                <td class="prioritas-<?=$k->id?>"></td>
-                            </tr>
-                            <?php endforeach?>
+                                <tr>
+                                    <td><?= $k->kode ?></td>
+                                    <?php foreach ($kriteria as $l): ?>
+                                        <td class="<?= $k->id ?>-<?= $l->id ?>"></td>
+                                    <?php endforeach ?>
+                                    <td class="jumlah-<?= $k->id ?>"></td>
+                                    <td class="prioritas-<?= $k->id ?>"></td>
+                                </tr>
+                            <?php endforeach ?>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td>Jumlah</td>
                                 <?php foreach ($kriteria as $k): ?>
-                                <td></td>
-                                <?php endforeach?>
+                                    <td></td>
+                                <?php endforeach ?>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -102,27 +103,27 @@
                             <tr>
                                 <th></th>
                                 <?php foreach ($kriteria as $k): ?>
-                                <th><?=$k->kode?></th>
-                                <?php endforeach?>
+                                    <th><?= $k->kode ?></th>
+                                <?php endforeach ?>
                                 <th>Jumlah</th>
                                 <th>Eigen Value</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($kriteria as $k): ?>
-                            <tr>
-                                <td><?=$k->kode?></td>
-                                <?php foreach ($kriteria as $l): ?>
-                                <td class="<?=$k->id?>-<?=$l->id?>"></td>
-                                <?php endforeach?>
-                                <td class="jumlah-<?=$k->id?>"></td>
-                                <td class="eigen-<?=$k->id?>"></td>
-                            </tr>
-                            <?php endforeach?>
+                                <tr>
+                                    <td><?= $k->kode ?></td>
+                                    <?php foreach ($kriteria as $l): ?>
+                                        <td class="<?= $k->id ?>-<?= $l->id ?>"></td>
+                                    <?php endforeach ?>
+                                    <td class="jumlah-<?= $k->id ?>"></td>
+                                    <td class="eigen-<?= $k->id ?>"></td>
+                                </tr>
+                            <?php endforeach ?>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="<?=count($kriteria) + 2?>">Jumlah</td>
+                                <td colspan="<?= count($kriteria) + 2 ?>">Jumlah</td>
                                 <td></td>
                             </tr>
                         </tfoot>
@@ -166,24 +167,24 @@
                 <br>
                 <div class="col s12 m6 offset-m3">
                     <?php foreach ($kriteria as $k): ?>
-                    <p class="center"><?=$k->nama?></p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Keterangan</th>
-                                <th>Bobot</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($k->subkriteria as $subkriteria): ?>
-                            <tr>
-                                <td><?=$subkriteria->keterangan?></td>
-                                <td><?=$subkriteria->bobot?></td>
-                            </tr>
-                            <?php endforeach?>
-                        </tbody>
-                    </table>
-                    <?php endforeach?>
+                        <p class="center"><?= $k->nama ?></p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Keterangan</th>
+                                    <th>Bobot</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($k->subkriteria as $subkriteria): ?>
+                                    <tr>
+                                        <td><?= $subkriteria->keterangan ?></td>
+                                        <td><?= $subkriteria->bobot ?></td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    <?php endforeach ?>
                     <br>
                 </div>
 
@@ -200,19 +201,19 @@
                                 <tr>
                                     <th>Nama Siswa</th>
                                     <?php foreach ($kriteria as $k): ?>
-                                    <th><?=$k->kode?></th>
-                                    <?php endforeach?>
+                                        <th><?= $k->kode ?></th>
+                                    <?php endforeach ?>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($siswa as $s): ?>
-                                <tr>
-                                    <td><?=$s->nama?></td>
-                                    <?php foreach ($kriteria as $k): ?>
-                                    <td><?=$s->nilai?->where("kriteria_id", $k->id)->first()?->nilai ?? 0?></td>
-                                    <?php endforeach?>
-                                </tr>
-                                <?php endforeach?>
+                                    <tr>
+                                        <td><?= $s->nama ?></td>
+                                        <?php foreach ($kriteria as $k): ?>
+                                            <td><?= $s->nilai?->where("kriteria_id", $k->id)->first()?->nilai ?? 0 ?></td>
+                                        <?php endforeach ?>
+                                    </tr>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
@@ -230,21 +231,21 @@
                                 <tr>
                                     <th>Nama Siswa</th>
                                     <?php foreach ($kriteria as $k): ?>
-                                    <th><?=$k->kode?></th>
-                                    <?php endforeach?>
+                                        <th><?= $k->kode ?></th>
+                                    <?php endforeach ?>
                                     <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($siswa as $s): ?>
-                                <tr>
-                                    <td><?=$s->nama?></td>
-                                    <?php foreach ($kriteria as $k): ?>
-                                    <td></td>
-                                    <?php endforeach?>
-                                    <td></td>
-                                </tr>
-                                <?php endforeach?>
+                                    <tr>
+                                        <td><?= $s->nama ?></td>
+                                        <?php foreach ($kriteria as $k): ?>
+                                            <td></td>
+                                        <?php endforeach ?>
+                                        <td></td>
+                                    </tr>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
@@ -263,16 +264,18 @@
                                 <th>Ranking</th>
                                 <th>Nama Siswa</th>
                                 <th>Total</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($siswa as $s): ?>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <?php endforeach?>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
                 </div>
@@ -285,4 +288,4 @@
         </div>
     </div>
 </div>
-<?=$this->endSection()?>
+<?= $this->endSection() ?>

@@ -35,7 +35,7 @@ class SiswaController extends BaseApi
     public function updateHasil()
     {
         $data = $this->request->getJSON(true);
-        SiswaModel::upsert($data, uniqueBy: ['id'], update: ['total', 'ranking']);
+        SiswaModel::upsert($data, uniqueBy: ['id'], update: ['total', 'ranking', 'status']);
         return $this->respond($data);
     }
 

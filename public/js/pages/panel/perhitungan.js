@@ -61,10 +61,13 @@ function getHasilValue() {
         .eq(crits.length + 1)
         .text()
     );
+    let status =
+      total >= 0.27 ? "Lulus" : total < 0.27 ? "Cadangan" : "Tidak Lulus";
     data.push({
       id: id,
       nama: nama,
       total: total,
+      status: status,
     });
   }
   data.sort((a, b) => b.total - a.total);
@@ -269,6 +272,7 @@ $("body").on("click", "#btn-hitung", function (e) {
           .text(i + 1);
         table.find("tr").eq(i).find("td").eq(1).text(d.nama);
         table.find("tr").eq(i).find("td").eq(2).text(d.total);
+        table.find("tr").eq(i).find("td").eq(3).text(d.status);
       });
       break;
     case 7:
@@ -311,6 +315,7 @@ function getRankingValue() {
       id: s.id,
       ranking: Number(row.find("td").eq(0).text()),
       total: Number(row.find("td").eq(2).text()),
+      status: row.find("td").eq(3).text(),
     });
   });
   return data;
