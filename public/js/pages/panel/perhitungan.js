@@ -34,7 +34,10 @@ const steps = [
   },
 ];
 
-const IR = [0.0, 0.0, 0.58, 0.9, 1.12, 1.24, 1.32, 1.41, 1.45, 1.49, 1.51, 1.48, 1.56, 1.57, 1.59];
+const IR = [
+  0.0, 0.0, 0.58, 0.9, 1.12, 1.24, 1.32, 1.41, 1.45, 1.49, 1.51, 1.48, 1.56,
+  1.57, 1.59,
+];
 
 $.fn.getColumn = function (column) {
   return this.find("tbody tr")
@@ -93,7 +96,11 @@ $("body").on("click", "#btn-hitung", function (e) {
           let total = $("table#pairwise")
             .getColumn(col + 1)
             .reduce((a, b) => a + b);
-          $(`table#normalize tbody td.${row + 1}-${col + 1}`).text(($(`table#pairwise tbody td.${row + 1}-${col + 1}`).text() / total).toFixed(2));
+          $(`table#normalize tbody td.${row + 1}-${col + 1}`).text(
+            (
+              $(`table#pairwise tbody td.${row + 1}-${col + 1}`).text() / total
+            ).toFixed(2)
+          );
         }
       }
       for (let i = 0; i < count; i++) {
@@ -149,7 +156,12 @@ $("body").on("click", "#btn-hitung", function (e) {
             .text()
         );
         for (let col = 0; col < count; col++) {
-          $(`table#eigen tbody td.${col + 1}-${row + 1}`).text(($(`table#pairwise tbody td.${col + 1}-${row + 1}`).text() * priority).toFixed(3));
+          $(`table#eigen tbody td.${col + 1}-${row + 1}`).text(
+            (
+              $(`table#pairwise tbody td.${col + 1}-${row + 1}`).text() *
+              priority
+            ).toFixed(3)
+          );
         }
       }
       for (let i = 0; i < count; i++) {
@@ -190,7 +202,9 @@ $("body").on("click", "#btn-hitung", function (e) {
         );
       break;
     case 4:
-      let lambdamax = Number($("table#eigen tfoot tr td").eq(1).text()).toFixed(3);
+      let lambdamax = Number($("table#eigen tfoot tr td").eq(1).text()).toFixed(
+        3
+      );
       let n = count;
       let ri = IR[n - 1];
       let ci = Number(lambdamax - n).toFixed(3) / (n - 1);
@@ -207,7 +221,7 @@ $("body").on("click", "#btn-hitung", function (e) {
         for (let col = 0; col < count; col++) {
           let cpriority = Number(
             $("table#normalize tbody tr")
-              .eq(row)
+              .eq(col)
               .find("td")
               .eq(count + 2)
               .text()
@@ -219,7 +233,14 @@ $("body").on("click", "#btn-hitung", function (e) {
               .eq(col + 1)
               .text()
           );
-          let scpriority = nilai <= 70 ? 0.11 : nilai <= 85 ? 0.36 : 0.63;
+          let scpriority;
+          if (nilai < 70) {
+            scpriority = 0.11;
+          } else if (nilai <= 85) {
+            scpriority = 0.263;
+          } else {
+            scpriority = 0.627;
+          }
           let value = (cpriority * scpriority).toFixed(3);
           total += Number(value);
           $("table#hasil tbody tr")
@@ -240,10 +261,15 @@ $("body").on("click", "#btn-hitung", function (e) {
       let data = getHasilValue();
       data.forEach((d, i) => {
         table.find("tr").eq(i).attr("data-id", d.id);
-        table.find("tr").eq(i).find("td").eq(0).text(i + 1);
+        table
+          .find("tr")
+          .eq(i)
+          .find("td")
+          .eq(0)
+          .text(i + 1);
         table.find("tr").eq(i).find("td").eq(1).text(d.nama);
         table.find("tr").eq(i).find("td").eq(2).text(d.total);
-      })
+      });
       break;
     case 7:
       $.ajax({
@@ -255,9 +281,9 @@ $("body").on("click", "#btn-hitung", function (e) {
         contentType: "application/json",
         processData: false,
         success: (res) => {
-          Toast.fire({
-            icon: "success",
-            title: "Data berhasil tersimpan",
+          M.toast({
+            html: "Data berhasil disimpan",
+            classes: "green",
           });
         },
       });
@@ -279,7 +305,7 @@ function getRankingValue() {
   const siswa = cloud.get("siswa");
   const table = $("table#ranking tbody");
   let data = [];
-  $.each(siswa, function (i, s) { 
+  $.each(siswa, function (i, s) {
     let row = table.find(`tr[data-id="${s.id}"]`);
     data.push({
       id: s.id,
@@ -294,22 +320,14 @@ $(document).ready(function () {
   cloud
     .add(origin + "/api/kriteria", {
       name: "kriteria",
-      callback: (data) => {
-        // table.kriteria.ajax.reload();
-        // renderPerbandingan();
-      },
+      callback: (data) => {},
     })
-    .then((kriteria) => {
-      // renderPerbandingan();
-    });
+    .then((kriteria) => {});
   cloud
     .add(origin + "/api/siswa", {
       name: "siswa",
-      callback: (data) => {
-      },
+      callback: (data) => {},
     })
-    .then((siswa) => {
-      // renderPerbandingan();
-    });
+    .then((siswa) => {});
   $(".preloader").slideUp();
 });

@@ -20,10 +20,10 @@ class Migrate extends BaseController
     ) {
         parent::initController($request, $response, $logger);
         if (ENVIRONMENT !== 'development') {
-            return throw new PageNotFoundException('Halaman tidak ditemukan');
+            throw PageNotFoundException::forPageNotFound();
         }
     }
-    
+
     public function index()
     {
         if (file_exists(WRITEPATH . 'storage/store.json')) {
@@ -50,7 +50,6 @@ class Migrate extends BaseController
             $migrate->setNamespace('App')->latest();
 
             $seeder->call('InitSeeder');
-
         } catch (Throwable $e) {
             throw new Exception($e->getMessage());
         }
