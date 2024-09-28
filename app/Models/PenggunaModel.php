@@ -102,7 +102,6 @@ class PenggunaModel extends Model
      */
     protected static function booted(): void
     {
-        static::created(function (PenggunaModel $pengguna) {
-        });
+        static::created(function (PenggunaModel $pengguna) {});
     }
 }

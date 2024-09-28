@@ -1,13 +1,15 @@
 <?php
+
 /** @var \CodeIgniter\View\View $this */
 ?>
 
-<?=$this->extend('layouts/panel/main')?>
-<?=$this->section('main')?>
+<?= $this->extend('layouts/panel/main') ?>
+<?= $this->section('main') ?>
 <style>
     tr.active {
         background-color: #f5f5f5;
     }
+
     tr.active td {
         font-weight: bold;
     }
@@ -23,25 +25,22 @@
             </div>
             <div class="row">
                 <div class="col s12 m6 offset-m3">
-                    <table>
+                    <table class="table striped responsive-table" id="table-pengumuman">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nama Siswa</th>
+                                <th>Total Nilai</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <thead>
-                                <tr>
-                                    <th>Ranking</th>
-                                    <th>Nama Siswa</th>
-                                    <th>Total Nilai</th>
-                                </tr>
-                            </thead>
-                            <?php foreach ($siswa as $s) : ?>
-                                <tr class="<?= $user->id == $s->user_id ? "active" : "" ?>">
-                                    <td><?= $s->ranking ?? "Belum Diranking" ?></td><td><?= $s->nama ?></td><td><?= $s->total ?? "Belum Ada" ?></td>
-                                </tr>
-                            <?php endforeach ?>
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-<?=$this->endSection()?>
+<?= $this->endSection() ?>

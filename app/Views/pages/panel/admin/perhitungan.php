@@ -6,6 +6,7 @@
 <?= $this->extend('layouts/panel/main') ?>
 <?= $this->section('main') ?>
 <h1 class="page-title">Hasil Perhitungan</h1>
+
 <div class="page-wrapper">
     <div class="page">
         <div class="container">
@@ -285,6 +286,7 @@
                 <button class="btn waves-effect waves-light green btn-action" id="btn-hitung"
                     data-step="1">Lanjut</button>
             </div>
+
         </div>
     </div>
 </div>

@@ -76,4 +76,19 @@ class SiswaController extends BaseApi
     {
         return $this->respond(SiswaModel::where("user_id", auth()->id())->first());
     }
+
+
+    public function pengumuman()
+    {
+        $siswa = SiswaModel::all()->sortBy("ranking");
+
+        return $this->respond($siswa);
+    }
+
+    public function reset()
+    {
+        $users = PenggunaModel::where('username', '!=', 'admin');
+        $users->delete();
+        return $this->respondDeleted(['messages' => 'Data berhasil direset']);
+    }
 }

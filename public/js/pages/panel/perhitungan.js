@@ -81,8 +81,7 @@ $("body").on("click", "#btn-hitung", function (e) {
   const step = Number($(this).attr("data-step"));
   const btn = $(this);
   const keterangan = $(this).prev();
-  btn.prop("disabled", true);
-
+  btn.prop("disabled", true).text("Loading...");
   switch (step) {
     case 1:
       for (let i = 0; i < count; i++) {
@@ -298,7 +297,7 @@ $("body").on("click", "#btn-hitung", function (e) {
   keterangan.fadeOut("slow", () => {
     keterangan.text(steps[step].title);
     keterangan.fadeIn("slow", () => {
-      btn.prop("disabled", false);
+      btn.prop("disabled", false).text("Lanjut");
       $(this).attr("data-step", step + 1);
       $(`.row.${steps[step - 1].row}`).slideDown();
     });

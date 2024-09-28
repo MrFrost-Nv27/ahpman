@@ -1,9 +1,10 @@
 <?php
+
 /** @var \CodeIgniter\View\View $this */
 ?>
 
-<?=$this->extend('layouts/panel/main')?>
-<?=$this->section('main')?>
+<?= $this->extend('layouts/panel/main') ?>
+<?= $this->section('main') ?>
 <h1 class="page-title">Data Peserta Didik</h1>
 <div class="page-wrapper">
     <div class="page">
@@ -12,6 +13,9 @@
                 <div class="col-12 text-end">
                     <button class="btn waves-effect waves-light green btn-popup" data-target="add" type="button"
                         data-target="form"><i class="material-icons left">add</i>Tambah</button>
+
+                    <button class="btn waves-effect waves-light red" id="reset-data" type="button"><i
+                            class="material-icons left">delete</i>Reset Data</button>
                 </div>
             </div>
             <div class="row">
@@ -29,11 +33,11 @@
         </div>
     </div>
 </div>
-<?=$this->endSection()?>
+<?= $this->endSection() ?>
 
 
 
-<?=$this->section('popup')?>
+<?= $this->section('popup') ?>
 <div class="popup side" data-page="add">
     <h1>Tambah Peserta DIdik Baru</h1>
     <br>
@@ -154,4 +158,4 @@
         </div>
     </form>
 </div>
-<?=$this->endSection()?>
+<?= $this->endSection() ?>

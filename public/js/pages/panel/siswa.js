@@ -240,6 +240,41 @@ $("body").on("keyup", "#form-edit input[name=nama]", function (e) {
   $("#form-edit input[name=name]").val($(this).val());
 });
 
+// reset-data
+$("body").on("click", "#reset-data", function (e) {
+  e.preventDefault();
+  Swal.fire({
+    title: "Apakah anda yakin ingin mereset data siswa ?",
+    text: "Data yang sudah direset tidak dapat dikembalikan lagi",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Reset",
+    cancelButtonText: "Batal",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        type: "POST",
+        url: origin + "/api/siswa/reset",
+        cache: false,
+        success: (data) => {
+          console.log(data);
+          table.siswa.ajax.reload();
+
+          Toast.fire({
+            icon: "success",
+            title: data.messages,
+          });
+        },
+        error: (xhr, status, error) => {
+          console.log(xhr.responseJSON);
+        },
+      });
+    }
+  });
+});
+
 $(document).ready(function () {
   cloud
     .add(origin + "/api/siswa", {
